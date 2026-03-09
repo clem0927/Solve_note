@@ -1,0 +1,513 @@
+/* 브라우저 기본 여백 제거 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    background-color: #343541;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+}
+
+body{
+    overflow:hidden;
+}
+
+/* ===================== */
+/* 전체 레이아웃 */
+/* ===================== */
+.layout {
+    display: flex;
+    height: 100vh;
+    background-color: #343541;
+    overflow:hidden;
+}
+
+/* ===================== */
+/* 사이드바 (다크톤 유지) */
+/* ===================== */
+.sidebar {
+    width: 320px;
+    background-color: #757575;
+    display: flex;
+    flex-direction: column;
+    padding: 0 15px;
+}
+/*202123*/
+.logo {
+    font-size: 40px;
+    color:white;
+    font-family: 'Permanent Marker', cursive;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.new-chat {
+    background-color: #343541;
+    border: 1px solid #565869;
+    color: white;
+    padding: 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-bottom: 15px;
+}
+
+.new-chat:hover {
+    background-color: #40414f;
+}
+
+
+/* ===================== */
+/* 메인 영역 */
+/* ===================== */
+
+.main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: #343541;
+    min-height: 0;
+}
+
+/* ===================== */
+/* 상단 메뉴바 (화이트 적용) */
+/* ===================== */
+
+.topbar {
+    background-color: #ffffff;
+    padding: 0px;
+    display: flex;
+    align-items: center;
+    height: 60px;
+    border-bottom: 1px solid #e5e5e5;
+    position: relative;
+    z-index: 100;
+}
+
+.navbar {
+    display: flex;
+    width: 100%;
+}
+
+.nav-list {
+    display: flex;
+    width: 100%;
+    align-items: center;
+}
+
+.navbar .nav-item {
+    padding: 18px 20px;
+    cursor: pointer;
+    color: #222;
+    font-size: 14px;
+    border-radius: 6px;
+}
+
+.navbar .nav-item:hover {
+    background-color: #f2f2f2;
+}
+
+.nav-list {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-item {
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+
+/* hover */
+
+.nav-item:hover {
+    background-color: #f2f2f2;
+}
+
+/* 선택된 메뉴 */
+
+.nav-item.active {
+    background-color: #e9e9e9;
+    color: #000;
+    font-weight: 600;
+}
+
+/* 오른쪽 메뉴 밀기 */
+
+.nav-item:nth-last-child(1) {
+    margin-left: auto;
+}
+
+/* ===================== */
+/* 드롭다운 */
+/* ===================== */
+
+.navbar .dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #ffffff;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    min-width: 160px;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.navbar .dropdown li {
+    padding: 12px 16px;
+    cursor: pointer;
+    color: #444;
+    font-size: 13px;
+}
+
+.navbar .dropdown li:hover {
+    background-color: #f2f2f2;
+    color: #000;
+}
+
+.navbar .nav-item:hover .dropdown {
+    display: block;
+}
+
+/* ===================== */
+/* 채팅 영역 */
+/* ===================== */
+
+.chat-area {
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    background: #ffffff;
+    min-height: 0;
+    align-items: flex-start;
+}
+
+.message {
+    max-width: 60%;
+    width: fit-content;
+    margin: 12px 12px;
+    padding: 12px 15px;
+    border-radius: 8px;
+    line-height: 1.5;
+    word-wrap: break-word;
+}
+
+.bot {
+    background-color: #f0f0f0;
+    color: black;
+}
+
+.user {
+    background-color: #f0f0f0;
+    align-self: flex-end;
+    color: black;
+}
+
+/* ===================== */
+/* 옵션 영역 (밝은 회색) */
+/* ===================== */
+
+.options-area {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding: 10px 15px;
+    background-color: #f7f7f8;
+    border-top: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
+    align-items: center;
+}
+
+.options-area label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: #000;
+    font-size: 13px;
+    height: 36px;
+}
+
+.options-area select,
+.options-area input[type="number"],
+.options-area .difficulty-btn,
+.options-area .example-btn {
+    height: 36px;
+    line-height: 1;
+    padding: 0 12px;
+    border-radius: 6px;
+    border: 1px solid #d0d0d0;
+    background-color: #ffffff;
+    color: #000;
+    font-size: 13px;
+    outline: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.options-area input[type="number"] {
+    width: 60px;
+    text-align: center;
+    padding: 0;
+}
+
+.options-area .difficulty-options,
+.options-area .example-options {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.options-area .difficulty-btn,
+.options-area .example-btn {
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.options-area .difficulty-btn.selected,
+.options-area .example-btn.selected {
+    background-color: #c4c4c4;
+    color: #000;
+    border-color: #c4c4c4;
+}
+
+.options-area .difficulty-btn:hover,
+.options-area .example-btn:hover {
+    background-color:#c4c4c4;
+    color: #000;
+    border-color: #c4c4c4;
+}
+
+/* ===================== */
+/* 입력창 (화이트 적용) */
+/* ===================== */
+
+.input-area {
+    padding: 15px;
+    border-top: 1px solid #e5e5e5;
+    display: flex;
+    gap: 10px;
+    background-color: #ffffff;
+    align-items: flex-end;
+}
+
+.input-area textarea {
+    flex: 1;
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #d0d0d0;
+    outline: none;
+    resize: none;
+    overflow: hidden;
+    font-family: inherit;
+    font-size: 14px;
+    line-height: 1.5;
+    max-height: 200px;
+    height: 50px;
+}
+
+.input-area button {
+    background-color: #c4c4c4;
+    border: none;
+    padding: 0 18px;
+    height: 50px;
+    border-radius: 6px;
+    cursor: pointer;
+
+}
+
+/* ===================== */
+/* 선생님 메시지 스타일 */
+/* ===================== */
+
+.chat-message {
+    display: flex;
+    flex-direction: column;
+    background-color: #f0f0f0;
+    color: #000;
+    padding: 10px 12px;
+    border-radius: 12px;
+    font-size: 13px;
+}
+
+.chat-text {
+    margin-bottom: 5px;
+}
+
+.chat-meta {
+    font-size: 11px;
+    color: #666;
+    text-align: right;
+}
+.nav-divider{
+    width:1px;
+    height:30px;
+    background:#dcdcdc;
+    margin:0 12px;
+}
+.save-btn {
+    background-color: #c4c4c4;
+    color: black;
+    border-radius: 20px;
+    padding:8px;
+    border: none;
+    font-size: 12px;
+}
+.save-btn:hover {
+    background-color: #c4c4c4;
+}
+.problem-list{
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+    padding:12px;
+}
+
+.problem-card{
+    max-width:60%;
+    background:#f0f0f0;
+    color:black;
+    padding:15px;
+    border-radius:10px;
+    line-height:1.6;
+}
+
+.problem-question{
+    margin-bottom:10px;
+}
+
+.problem-answer{
+    margin-top:8px;
+    font-weight:bold;
+}
+
+.problem-solution{
+    margin-top:10px;
+    padding:12px 15px;
+}
+.toggle-btn{
+    margin-top:10px;
+    padding:6px 10px;
+    border:none;
+    border-radius:6px;
+    background:#dcdcdc;
+    cursor:pointer;
+    font-size:12px;
+}
+
+.toggle-btn:hover{
+    background:#c4c4c4;
+}
+
+.problem-answer{
+    margin-top:10px;
+    font-weight:bold;
+}
+
+.problem-solution{
+    margin-top:10px;
+    line-height:1.6;
+}
+.concept-answer{
+    padding:12px 20px;
+}
+/* ===================== */
+/* 사이드바 프로필 */
+/* ===================== */
+
+.sidebar-profile{
+    margin-top:auto;
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:12px;
+    border-top:1px solid rgba(255,255,255,0.2);
+    cursor:pointer;
+    transition:background 0.2s ease;
+}
+
+.sidebar-profile:hover{
+    background:rgba(0,0,0,0.15);
+}
+
+/* 프로필 동그라미 */
+
+.profile-avatar{
+    width:38px;
+    height:38px;
+    border-radius:50%;
+    background:#ffffff;
+    color:#757575;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:700;
+    font-size:14px;
+}
+
+/* 텍스트 */
+
+.profile-info{
+    display:flex;
+    flex-direction:column;
+}
+
+.profile-name{
+    font-size:14px;
+    font-weight:600;
+}
+
+.profile-email{
+    font-size:11px;
+    opacity:0.8;
+}
+/* ===================== */
+/* 문제 수 카운트 박스 */
+/* ===================== */
+
+.count-box{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin-left:8px;
+}
+
+.count-box button{
+    width:36px;
+    height:36px;
+    border:none;
+    border-radius:6px;
+    background:#dcdcdc;
+    font-size:18px;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.count-box button:hover{
+    background:#c4c4c4;
+}
+
+.count-number{
+    width:40px;
+    text-align:center;
+    font-size:16px;
+    font-weight:600;
+}

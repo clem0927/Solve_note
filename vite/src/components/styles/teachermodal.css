@@ -1,0 +1,302 @@
+/* ===========================
+   🔹 모달 기본
+=========================== */
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: #202123;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 1000px;
+}
+
+/* ===========================
+   🔹 상단 네비
+=========================== */
+
+.modal-nav {
+    display: flex;
+    border-bottom: 1px solid #444;
+    margin-bottom: 15px;
+}
+
+.modal-nav-item {
+    flex: 1;
+    text-align: center;
+    padding: 12px 0;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.modal-nav-item:hover {
+    background-color: #343541;
+}
+
+.modal-nav-item.active {
+    border-bottom: 3px solid #19c37d;
+    font-weight: 700;
+}
+
+/* ===========================
+   🔹 내용 영역
+=========================== */
+
+.modal-body {
+    min-height: 650px;
+}
+
+/* ===========================
+   🔹 선생님 선택
+=========================== */
+
+.teacher-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin: 15px 0;
+}
+
+.teacher-item {
+    cursor: pointer;
+    flex: 0 0 23%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.teacher-image-container {
+    width: 100%;
+    height: 600px;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.teacher-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.teacher-image-container:hover img {
+    transform: scale(1.02);
+}
+
+.teacher-name {
+    margin-top: 8px;
+    text-align: center;
+    font-size: 14px;
+}
+
+/* ===========================
+   🔹 보유 스킨 (🔥 핵심 부분)
+=========================== */
+
+.skin-area {
+    margin-top: 20px;
+}
+
+/* 한 줄 4개 고정 */
+.owned-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+/* 카드 */
+.owned-large-item {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #2a2b32;
+    padding: 10px;
+    border-radius: 12px;
+    transition: transform 0.2s ease;
+}
+
+.owned-large-item:hover {
+    transform: scale(1.03);
+}
+
+/* 세로 비율 고정 (가장 중요) */
+.owned-large-media {
+    width: 100%;
+    aspect-ratio: 2 / 5;   /* 세로 긴 카드 비율 */
+    overflow: hidden;
+    border-radius: 10px;
+    background-color: #444;
+}
+
+.owned-large-media img,
+.owned-large-media video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* 텍스트 */
+.owned-large-name {
+    margin-top: 10px;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.owned-large-desc {
+    font-size: 13px;
+    color: #aaa;
+    text-align: center;
+}
+
+/* ===========================
+   🔹 전체 스킨 (랭크 카드)
+=========================== */
+
+.skin-rank-card {
+    background-color: #2a2b32;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.skin-rank-title {
+    font-weight: 700;
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #19c37d;
+}
+.skin-rank-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start; /* 좌측 정렬, 필요시 center */
+}
+
+.skin-item {
+    display: flex;
+    flex-direction: row; /* 카드 전체는 가로 */
+    align-items: center; /* 이미지와 텍스트 세로 중앙정렬 */
+    gap: 5px;
+    background-color: #2a2b32;
+    padding: 3px 3px;
+    border-radius: 10px;
+    min-width: 300px;
+    max-width: 500px;
+}
+
+.skin-image-slot {
+    width: 60px;
+    height: 80px;
+    border-radius: 10px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.skin-image-slot img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* 텍스트 + 버튼 영역 */
+.skin-description-container {
+    display: flex;
+    flex-direction: column; /* 텍스트 + 버튼 세로 스택 */
+    justify-content: center;
+    gap: 5px;
+    flex: 1;
+    align-items: flex-start; /* 왼쪽 정렬 */
+}
+
+
+.skin-description-container .skin-description {
+    font-size: 14px;
+    color: #ccc;
+}
+
+.skin-description-container .buy-btn {
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    border: none;
+    background-color: #19c37d;
+    color: black;
+    font-weight: 600;
+    width: fit-content; /* 텍스트 너비에 맞춤 */
+}
+
+.skin-description-container .buy-btn.owned {
+    background-color: #f5a623;
+}
+.buy-btn {
+    margin-top: 8px;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    border: none;
+    background-color: #19c37d;
+    color: black;
+    font-weight: 600;
+}
+
+.buy-btn.owned {
+    background-color: #f5a623;
+}
+
+/* ===========================
+   🔹 페이징
+=========================== */
+
+.pagination {
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.pagination button {
+    padding: 6px 14px;
+    background-color: #19c37d;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    color: black;
+    font-weight: 600;
+}
+
+.pagination button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+/* ===========================
+   🔹 버튼
+=========================== */
+
+.close-btn {
+    margin-top: 15px;
+    background-color: #19c37d;
+    border: none;
+    color: black;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.close-btn:hover {
+    opacity: 0.9;
+}

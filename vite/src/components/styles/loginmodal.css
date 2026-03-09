@@ -1,0 +1,120 @@
+.modal-overlay {
+    position: fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background-color: rgba(0,0,0,0.5);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    z-index:1000;
+}
+
+.modal-container {
+    background-color:#ffffff;
+    color:#000;
+    width:400px;
+    padding:22px;
+    border-radius:12px;
+    position:relative;
+    box-shadow:0 10px 25px rgba(0,0,0,0.25);
+}
+
+/* 닫기 버튼 */
+
+.close-btn2{
+    position:absolute;
+    top:10px;
+    right:12px;
+    background:none;
+    border:none;
+    font-size:20px;
+    cursor:pointer;
+    color:#666;
+}
+
+.close-btn2:hover{
+    color:#000;
+}
+
+
+/* ===================== */
+/* 탭 */
+/* ===================== */
+
+.modal-tabs{
+    display:flex;
+    border-bottom:1px solid #dcdcdc;
+    margin-bottom:18px;
+}
+
+.tab-item{
+    flex:1;
+    text-align:center;
+    padding:10px 0;
+    cursor:pointer;
+    font-weight:500;
+    transition:all 0.2s ease;
+    color:#666;
+}
+
+.tab-item:hover{
+    background:#f0f0f0;
+}
+
+.tab-item.active{
+    border-bottom:3px solid #c4c4c4;
+    font-weight:700;
+    color:#000;
+}
+
+
+/* ===================== */
+/* 폼 */
+/* ===================== */
+
+.modal-form label{
+    display:flex;
+    flex-direction:column;
+    margin-bottom:14px;
+    font-size:13px;
+    color:#000;
+}
+
+.modal-form input{
+    margin-top:6px;
+    padding:10px;
+    border-radius:6px;
+    border:1px solid #dcdcdc;
+    outline:none;
+    background:#ffffff;
+    color:#000;
+    font-size:13px;
+}
+
+.modal-form input:focus{
+    border-color:#c4c4c4;
+}
+
+
+/* ===================== */
+/* 버튼 */
+/* ===================== */
+
+.submit-btn{
+    width:100%;
+    padding:10px 0;
+    background:#c4c4c4;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+    font-weight:600;
+    color:#000;
+    margin-top:12px;
+    transition:all 0.15s ease;
+}
+
+.submit-btn:hover{
+    background:#b5b5b5;
+}
