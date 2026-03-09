@@ -143,13 +143,31 @@ const LoginModal = ({ show, onClose }) => {
                         {tab === "login" ? "로그인" : "회원가입"}
                     </button>
                 </form>
-                <button
-                    onClick={()=>{
-                        window.location.href="http://localhost:8080/oauth2/authorization/google"
-                    }}
-                >
-                    Google 로그인
-                </button>
+
+                {/* 소셜 로그인 (로그인 탭에서만 표시) */}
+                {tab === "login" && (
+                    <div className="social-login">
+
+                        <div className="divider">
+                            <span>또는</span>
+                        </div>
+
+                        <button
+                            className="google-login-btn"
+                            onClick={()=>{
+                                window.location.href="http://localhost:8080/oauth2/authorization/google"
+                            }}
+                        >
+                            <img
+                                src="/images/g-logo.png"
+                                alt="google"
+                            />
+                            Google로 로그인
+                        </button>
+
+                    </div>
+                )}
+
                 {message && <div className="form-message">{message}</div>}
             </div>
         </div>
