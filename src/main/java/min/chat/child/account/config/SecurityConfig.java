@@ -30,7 +30,10 @@ public class SecurityConfig {
         http
                 .cors(cors -> cors.configurationSource(request -> {
                     var config = new org.springframework.web.cors.CorsConfiguration();
-                    config.setAllowedOrigins(List.of("http://localhost:5173"));
+                    config.setAllowedOrigins(List.of(
+                            "http://localhost:5173",
+                            "https://clem0927.shop"
+                    ));
                     config.setAllowedMethods(List.of("GET","POST","PUT","DELETE","OPTIONS"));
                     config.setAllowCredentials(true);
                     config.setAllowedHeaders(List.of("*"));
@@ -73,7 +76,7 @@ public class SecurityConfig {
                                 .userService(customOAuth2UserService)
                         )
                         .successHandler((req,res,auth)->{
-                            res.sendRedirect("http://localhost:5173/oauth-success");
+                            res.sendRedirect("https://clem0927.shop/oauth-success");
                         })
                         .failureHandler((req,res,ex)->{
                             ex.printStackTrace(); // 콘솔에 전체 오류 출력
