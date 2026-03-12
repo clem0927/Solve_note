@@ -9,17 +9,20 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Debug secrets
+      - uses: actions/checkout@v3
+
+      - name: Write SSH key
         run: |
-          echo "HOST=${{ secrets.EC2_HOST }}"
-          echo "USER=${{ secrets.EC2_USER }}"
+          mkdir -p ~/.ssh
+          echo "${{ secrets.EC2_KEY }}" > ~/.ssh/key
+          chmod 600 ~/.ssh/key
 
       - name: Deploy to EC2
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USER }}
-          key: ${{ secrets.EC2_KEY }}
+          key_path: ~/.ssh/key
           script: |
             cd ~/solvenote/spring_project
             git fetch origin
