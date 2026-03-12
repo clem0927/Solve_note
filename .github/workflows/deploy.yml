@@ -17,10 +17,12 @@ jobs:
           key: ${{ secrets.EC2_KEY }}
           script: |
             cd ~/solvenote/spring_project
-            git pull origin deploy
+            git fetch origin
+            git reset --hard origin/deploy
 
             cd ~/solvenote/Solvenote_Ai
-            git pull origin main
+            git fetch origin
+            git reset --hard origin/main
 
             cd ~/solvenote
             docker compose up -d --build
