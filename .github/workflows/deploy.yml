@@ -11,18 +11,13 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Write SSH key
-        run: |
-          mkdir -p ~/.ssh
-          echo "${{ secrets.EC2_KEY }}" > ~/.ssh/key
-          chmod 600 ~/.ssh/key
-
       - name: Deploy to EC2
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USER }}
-          key_path: ~/.ssh/key
+          key: |
+            ${{ secrets.EC2_KEY }}
           script: |
             cd ~/solvenote/spring_project
             git fetch origin
