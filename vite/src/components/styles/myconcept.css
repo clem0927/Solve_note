@@ -446,3 +446,140 @@
     margin:0;
     width:100%;
 }
+.mc-category-item{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.mc-category-delete-btn{
+    border:none;
+    background:none;
+    color:#aaa;
+    font-size:14px;
+    cursor:pointer;
+}
+
+.mc-category-delete-btn:hover{
+    color:red;
+}
+/* ================== MOBILE ================== */
+
+@media (max-width:768px){
+
+    /* layout 세로 전환 */
+
+    .mc-layout{
+        flex-direction:column;
+        height:auto;
+    }
+
+    /* 카테고리 사이드바 → 위쪽 바 */
+
+    .mc-sidebar{
+        width:100%;
+        height:auto;
+        flex-direction:column;
+        border-right:none;
+        border-bottom:1px solid #ddd;
+        padding:10px;
+    }
+
+    /* 카테고리 리스트 → 가로 스크롤 */
+
+    .mc-category-list{
+        display:flex;
+        flex-direction:row;
+        gap:8px;
+        overflow-x:auto;
+        width:100%;
+    }
+    /* 카테고리 버튼 스타일 */
+
+    .mc-category-item{
+        white-space:nowrap;
+        background:#e5e5e5;
+        padding:6px 12px;
+        border-radius:20px;
+        flex:0 0 auto;
+    }
+    .mc-category-list::-webkit-scrollbar{
+        display:none;
+    }
+    /* 개념 grid → 1열 */
+
+    .mc-concept-grid{
+        grid-template-columns:repeat(2,1fr);
+        gap:10px;
+    }
+
+    /* 카드 패딩 약간 축소 */
+
+    .mc-concept-card{
+        padding:12px;
+        font-size:13px;
+    }
+    .mc-concept-title{
+        font-size:13px;
+    }
+
+    .mc-concept-preview{
+        font-size:12px;
+        max-height:70px;
+    }
+
+    /* 검색창 */
+
+    .mc-search-bar{
+        display:flex;
+        flex-direction:row;
+        gap:8px;
+    }
+    .mc-add-btn{
+        flex:0 0 auto;
+    }
+
+    .mc-search-input{
+        flex:1;
+    }
+
+
+    .mc-search-input{
+        margin-right:0;
+    }
+
+    /* 모달 */
+
+    .mc-modal-content{
+        width:60%;
+        max-height:50vh;
+        padding:15px;
+    }
+    .mc-modal-body{
+        font-size:14px;
+    }
+    .mc-edit-answer{
+        height:150px;
+    }
+    /* pagination */
+
+    .mc-pagination{
+        flex-wrap:wrap;
+    }
+    .mc-category-add{
+        margin-top:10px;
+        display:flex;
+        flex-direction:row;
+        gap:6px;
+    }
+
+    .mc-category-input{
+        flex:1;
+    }
+
+    .mc-category-add-btn{
+        width:auto;
+        padding:6px 10px;
+    }
+
+}

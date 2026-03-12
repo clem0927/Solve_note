@@ -278,8 +278,10 @@ const Home = () => {
         <div className="layout">
 
             <aside className="sidebar">
-                <div className="logo">Solve Note</div>
-                <img src="images/solvenote.png" />
+                <div className="logo-area">
+                    <div className="logo">Solve Note</div>
+                    <img className="logo-img" src="images/solvenote.png" />
+                </div>
                 <div
                     className="sidebar-profile"
                     onClick={() => setShowProfile(true)}

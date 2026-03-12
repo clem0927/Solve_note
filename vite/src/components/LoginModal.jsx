@@ -155,11 +155,11 @@ const LoginModal = ({ show, onClose }) => {
                         <button
                             className="google-login-btn"
                             onClick={()=>{
-                                window.location.href="http://localhost:8080/oauth2/authorization/google"
+                                window.location.href="/oauth2/authorization/google"
                             }}
                         >
                             <img
-                                src="/images/g-logo.png"
+                                src="/images/glogo.png"
                                 alt="google"
                             />
                             Google로 로그인

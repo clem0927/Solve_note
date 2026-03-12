@@ -19,6 +19,7 @@ const MyConcept = ({ userEmail }) => {
     const [totalPages, setTotalPages] = useState(0);
 
     const [newCategory, setNewCategory] = useState("");
+    const [deleteCategoryName, setDeleteCategoryName] = useState("");
 
     const [selectedConcept, setSelectedConcept] = useState(null);
 
@@ -62,6 +63,25 @@ const MyConcept = ({ userEmail }) => {
         } catch (err) {
             console.error(err);
         }
+    };
+
+    const deleteCategory = async (id) => {
+
+        if (!window.confirm("카테고리를 삭제하시겠습니까?")) return;
+
+        try {
+
+            await axios.delete(`/back/category/${id}`, {
+                withCredentials:true
+            });
+
+            fetchCategories();
+            fetchConcepts();
+
+        } catch (err) {
+            console.error(err);
+        }
+
     };
 
     const fetchConcepts = async () => {
@@ -239,6 +259,7 @@ const MyConcept = ({ userEmail }) => {
                         <li
                             key={cat.id ?? "all"}
                             className={`mc-category-item ${selectedCategory === cat.id ? "selected" : ""}`}
+
                             onClick={() => handleCategorySelect(cat.id)}
 
                             onDragOver={(e) => e.preventDefault()}
@@ -258,7 +279,23 @@ const MyConcept = ({ userEmail }) => {
 
                             }}
                         >
-                            {cat.name}
+
+                            <span className="mc-category-name">
+                                {cat.name}
+                            </span>
+
+                            {cat.id !== null && (
+                                <button
+                                    className="mc-category-delete-btn"
+                                    onClick={(e)=>{
+                                        e.stopPropagation();
+                                        deleteCategory(cat.id);
+                                    }}
+                                >
+                                    x
+                                </button>
+                            )}
+
                         </li>
 
                     ))}

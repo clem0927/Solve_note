@@ -85,6 +85,25 @@ const MyProblem = ({ userEmail }) => {
         }
 
     };
+    const deleteCategory = async (id) => {
+
+        if (!window.confirm("카테고리를 삭제하시겠습니까?")) return;
+
+        try {
+
+            await axios.delete(`/back/problem-category/${id}`, {
+                withCredentials:true
+            });
+
+            fetchCategories();
+            fetchProblems();
+
+        } catch (err) {
+            console.error(err);
+        }
+
+    };
+
 
     // ================= 문제 생성 =================
 
@@ -350,7 +369,21 @@ const MyProblem = ({ userEmail }) => {
                             }}
                         >
 
-                            {cat.name}
+                            <span className="mc-category-name">
+                                {cat.name}
+                            </span>
+
+                            {cat.id !== null && (
+                                <button
+                                    className="mc-category-delete-btn"
+                                    onClick={(e)=>{
+                                        e.stopPropagation();
+                                        deleteCategory(cat.id);
+                                    }}
+                                >
+                                    x
+                                </button>
+                            )}
 
                         </li>
 

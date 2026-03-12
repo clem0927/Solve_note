@@ -33,7 +33,9 @@ public class SecurityConfig {
                     config.setAllowedOrigins(List.of(
                             "http://localhost:5173",
                             "https://clem0927.shop",
-                            "https://www.clem0927.shop"
+                            "https://www.clem0927.shop",
+                            "https://solvenote.kr",
+                            "https://www.solvenote.kr"
                     ));
                     config.setAllowedMethods(List.of("GET","POST","PUT","DELETE","OPTIONS"));
                     config.setAllowCredentials(true);
@@ -77,7 +79,7 @@ public class SecurityConfig {
                                 .userService(customOAuth2UserService)
                         )
                         .successHandler((req,res,auth)->{
-                            res.sendRedirect("https://clem0927.shop/oauth-success");
+                            res.sendRedirect("https://solvenote.kr/oauth-success");
                         })
                         .failureHandler((req,res,ex)->{
                             ex.printStackTrace(); // 콘솔에 전체 오류 출력
