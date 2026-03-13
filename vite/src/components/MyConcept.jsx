@@ -48,7 +48,7 @@ const MyConcept = ({ userEmail }) => {
     const fetchCategories = async () => {
         try {
             const res = await axios.get("/back/category", { withCredentials: true });
-            const allCategory = { id: null, name: "전체" };
+            const allCategory = { id: null, name: "카테고리 없음" };
             setCategories([allCategory, ...res.data]);
         } catch (err) {
             console.error(err);
@@ -109,7 +109,9 @@ const MyConcept = ({ userEmail }) => {
                 size
             };
 
-            if (selectedCategory) params.categoryId = selectedCategory;
+            if (selectedCategory !== null) {
+                params.categoryId = selectedCategory;
+            }
 
             const res = await axios.get("/back/concept", { params });
 
@@ -229,7 +231,7 @@ const MyConcept = ({ userEmail }) => {
 
             await axios.put(
                 `/back/concept/${conceptId}/category`,
-                { categoryId: categoryId },
+                { categoryId: categoryId ?? null },
                 { withCredentials: true }
             );
 
@@ -288,7 +290,9 @@ const MyConcept = ({ userEmail }) => {
 
                                 const conceptId = e.dataTransfer.getData("conceptId");
 
-                                handleDropCategory(conceptId, cat.id);
+                                const categoryId = cat.id === null ? null : Number(cat.id);
+
+                                handleDropCategory(conceptId, categoryId);
 
                                 setDragging(false);
 
@@ -461,8 +465,35 @@ const MyConcept = ({ userEmail }) => {
                                     >
                                         {(concept.answer || "").slice(0,150) + "..."}
                                     </ReactMarkdown>
-
                                 </div>
+                                <select
+                                    className="mc-category-select"
+                                    value={concept.category?.id ?? "default"}
+                                    onClick={(e)=>e.stopPropagation()}
+                                    onChange={(e)=>{
+
+                                        const v = e.target.value;
+
+                                        if(v === "default") return;
+
+                                        const categoryId = v === "none" ? null : Number(v);
+
+                                        handleDropCategory(concept.id, categoryId);
+
+                                    }}
+                                >
+                                    <option value="default">카테고리 이동</option>
+                                    <option value="none">카테고리 없음</option>
+
+                                    {categories
+                                        .filter(cat => cat.id !== null)
+                                        .map(cat => (
+                                            <option key={cat.id} value={cat.id}>
+                                                {cat.name}
+                                            </option>
+                                        ))
+                                    }
+                                </select>
 
                                 {concept.category && (
                                     <span className="mc-concept-tag">

@@ -100,7 +100,7 @@ public class ConceptService {
                     .orElseThrow(() -> new RuntimeException("카테고리 없음"));
         }
 
-        concept.update(conceptToDto(concept), category); // category만 바뀌도록 호출
+        concept.changeCategory(category);
     }
 
     // DTO 생성: 기존 Concept 값 유지

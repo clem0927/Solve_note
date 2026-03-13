@@ -60,7 +60,7 @@ const MyProblem = ({ userEmail }) => {
                 params: { email: userEmail }
             });
 
-            const allCategory = { id: null, name: "전체" };
+            const allCategory = { id: null, name: "카테고리없음" };
 
             setCategories([allCategory, ...res.data]);
 
@@ -168,7 +168,9 @@ const MyProblem = ({ userEmail }) => {
                 size
             };
 
-            if (selectedCategory) params.categoryId = selectedCategory;
+            if (selectedCategory !== null) {
+                params.categoryId = selectedCategory;
+            }
 
             const res = await axios.get("/back/problem", { params });
 
@@ -322,7 +324,7 @@ const MyProblem = ({ userEmail }) => {
 
             await axios.put(
                 `/back/problem/${problemId}/category`,
-                { categoryId },
+                { categoryId: categoryId ?? null },
                 { withCredentials: true }
             );
 
@@ -376,7 +378,8 @@ const MyProblem = ({ userEmail }) => {
 
                                 const problemId = e.dataTransfer.getData("problemId");
 
-                                handleDropCategory(problemId, cat.id);
+                                const categoryId = cat.id === null ? null : Number(cat.id);
+                                handleDropCategory(problemId, categoryId);
 
                                 setDragging(false);
 
@@ -558,6 +561,7 @@ const MyProblem = ({ userEmail }) => {
 
                                 </div>
 
+
                                 {problem.difficulty && (
 
                                     <span className="mc-concept-tag">
@@ -565,6 +569,36 @@ const MyProblem = ({ userEmail }) => {
                                     </span>
 
                                 )}
+                                <select
+                                    className="mc-category-select"
+                                    value={problem.category?.id ?? "default"}
+                                    onClick={(e)=>e.stopPropagation()}
+                                    onChange={(e)=>{
+
+                                        const v = e.target.value;
+
+                                        if(v === "default") return;
+
+                                        const categoryId = v === "none" ? null : Number(v);
+
+                                        handleDropCategory(problem.id, categoryId);
+
+                                    }}
+                                >
+
+                                    <option value="default">카테고리 이동</option>
+                                    <option value="none">카테고리 없음</option>
+
+                                    {categories
+                                        .filter(cat => cat.id !== null)
+                                        .map(cat => (
+                                            <option key={cat.id} value={cat.id}>
+                                                {cat.name}
+                                            </option>
+                                        ))
+                                    }
+
+                                </select>
 
                             </div>
 

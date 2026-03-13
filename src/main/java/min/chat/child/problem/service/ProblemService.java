@@ -86,7 +86,7 @@ public class ProblemService {
                     .orElseThrow(() -> new RuntimeException("카테고리 없음"));
         }
 
-        problem.update(dto, category);
+        problem.changeProblemCategory(category);
     }
 
     @Transactional

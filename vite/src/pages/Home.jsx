@@ -10,6 +10,7 @@ import MyConcept from "../components/MyConcept.jsx";
 import MyProblem from "../components/MyProblem.jsx";
 import ProfileModal from "../components/ProfileModal.jsx";
 import Calendar from "../components/Calendar.jsx";
+import { useNavigate } from "react-router-dom";
 axios.defaults.withCredentials = true;
 const Home = () => {
 
@@ -48,6 +49,8 @@ const Home = () => {
     const [loading, setLoading] = useState(false);
 
     const [showNotice, setShowNotice] = useState(false);
+
+    const navigate=useNavigate();
 
     // ===== 현재 모드 messages 선택 =====
     const getMessages = () => {
@@ -284,7 +287,7 @@ const Home = () => {
 
                 <div className="logo-area">
 
-                    <div className="logo">
+                    <div className="logo" onClick={()=>navigate("/")}>
                         Solve Note <span className="logo-beta">BETA</span>
                     </div>
 

@@ -64,9 +64,7 @@ public class Concept {
 
     public void update(ConceptDto dto, Category category) {
 
-        if(category != null){
-            this.category = category;
-        }
+        this.category = category;
 
         if(dto.getQuestion() != null){
             this.question = dto.getQuestion();
@@ -79,5 +77,8 @@ public class Concept {
         if(dto.getIsFavorite() != null){
             this.isFavorite = dto.getIsFavorite();
         }
+    }
+    public void changeCategory(Category category){
+        this.category = category;
     }
 }

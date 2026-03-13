@@ -663,12 +663,188 @@
     border-radius:4px;
     cursor:pointer;
 }
+.mc-category-select{
+    margin-top:6px;
+    width:100%;
+    border:1px solid #ddd;
+    border-radius:4px;
+    padding:4px;
+    font-size:12px;
+}
+.mc-category-select{
+    display:none;
+}
 /* 모바일 */
 
 @media (max-width:768px){
+    .mc-sidebar-title{
+        font-size:12px;
+    }
+    .mc-category-item{
+        font-size:10px;
+
+    }
+
+    .mc-add-btn{
+        font-size:12px;
+    }
+    .mc-concept-title{
+        font-size:12px;
+    }
+
+    .mc-concept-preview{
+        font-size:11px;
+    }
 
     .mc-edit-grid{
         grid-template-columns:1fr;
     }
+    .mc-category-select{
+        display:block;
+    }
+    /* 전체 기본 폰트 축소 */
+    .mc-layout{
+        font-size:13px;
+    }
+
+    /* 사이드바 */
+    .mc-sidebar{
+        padding:10px;
+    }
+
+    .mc-sidebar-title{
+        font-size:12px;
+        margin-bottom:8px;
+    }
+
+    .mc-category-item{
+        font-size:11px;
+        padding:5px 10px;
+    }
+
+    .mc-category-add-toggle{
+        font-size:11px;
+    }
+
+    /* 검색 영역 */
+
+    .mc-search-bar{
+        margin-bottom:12px;
+        gap:6px;
+    }
+
+    .mc-add-btn{
+        font-size:12px;
+        padding:6px 10px;
+    }
+
+    .mc-search-input{
+        padding:6px;
+        font-size:12px;
+    }
+
+    /* 카드 grid */
+
+    .mc-concept-grid{
+        grid-template-columns:repeat(2,1fr);
+        grid-auto-rows:160px;
+        gap:8px;
+    }
+
+    /* 카드 */
+
+    .mc-concept-card{
+        padding:10px;
+        height:160px;
+    }
+
+    .mc-card-header{
+        margin-bottom:6px;
+    }
+
+    .mc-concept-title{
+        font-size:12px;
+    }
+
+    .mc-concept-preview{
+        font-size:11px;
+        line-height:1.4;
+    }
+
+    .mc-card-actions{
+        gap:6px;
+    }
+
+    .mc-edit-btn{
+        font-size:10px;
+        padding:3px 6px;
+    }
+
+    .mc-fav{
+        font-size:14px;
+    }
+
+    /* 카테고리 선택 */
+
+    .mc-category-select{
+        display:block;
+        font-size:11px;
+        padding:4px;
+        margin-top:4px;
+    }
+
+    /* 모바일에서 태그 숨김 (공간 확보) */
+
+    .mc-concept-tag{
+        display:none;
+    }
+
+    /* 페이지네이션 */
+
+    .mc-pagination{
+        margin-top:12px;
+        gap:8px;
+    }
+
+    .mc-page-btn{
+        padding:4px 8px;
+        font-size:11px;
+    }
+
+    .mc-page-info{
+        font-size:11px;
+    }
+
+    /* 모달 */
+
+    .mc-modal-content{
+        width:92%;
+        max-height:70vh;
+        padding:15px;
+    }
+
+    .mc-modal-body{
+        font-size:13px;
+    }
+
+    .mc-edit-question{
+        font-size:13px;
+        padding:6px;
+    }
+
+    .mc-edit-answer{
+        font-size:12px;
+        padding:8px;
+        min-height:120px;
+    }
+    .mc-category-item{
+        padding:6px 10px;
+        gap:8px;
+    }
+
+    .mc-category-delete-btn{
+        font-size:12px;
+    }
+
 
 }

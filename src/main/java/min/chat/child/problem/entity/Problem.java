@@ -72,9 +72,9 @@ public class Problem {
 
     public void update(ProblemDto dto, ProblemCategory category) {
 
-        if(category != null){
-            this.category = category;
-        }
+
+        this.category = category;
+
 
         if(dto.getQuestion() != null){
             this.question = dto.getQuestion();
@@ -95,5 +95,8 @@ public class Problem {
         if(dto.getIsFavorite() != null){
             this.isFavorite = dto.getIsFavorite();
         }
+    }
+    public void changeProblemCategory(ProblemCategory category){
+        this.category = category;
     }
 }

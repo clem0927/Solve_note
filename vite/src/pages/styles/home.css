@@ -46,6 +46,11 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+
+    transition: transform 0.15s ease;
+}
+.logo:hover{
+    transform:scale(1.05);
 }
 .logo-area{
     display:flex;
@@ -447,6 +452,7 @@ textarea{
 /* ===================== */
 
 .sidebar-profile{
+    width: 100%;
     margin-top:auto;
     display:flex;
     align-items:center;
@@ -730,18 +736,22 @@ textarea{
     .logo-area{
         flex-direction:row-reverse;
         align-items:center;
-        gap:8px;
+        gap:6px;
     }
 
     .logo-img{
-        height:32px;
+        height:20px;
         width:auto;
     }
 
     .logo{
-        font-size:18px;
+        font-size:20px;
     }
+    .logo-beta{
+        font-size:8px;
+        margin-left:1px;
 
+    }
     .sidebar{
         width:100%;
         height:60px;
@@ -750,6 +760,28 @@ textarea{
         justify-content:space-between;
         padding:0 12px;
     }
+    .sidebar-profile{
+        border:none;
+        height: 100%;
+        margin:0;
+        padding:0;
+    }
+
+    .profile-avatar{
+
+    }
+    .notice-area{
+        display:none;
+    }
+
+    .profile-name{
+        font-size:11px;
+    }
+
+    .profile-email{
+        font-size:9px;
+    }
+
 
 
     /* 채팅 */
@@ -798,7 +830,7 @@ textarea{
 
     .navbar .nav-item{
         padding:15px 12px;
-        font-size:13px;
+        font-size:10px;
         white-space: nowrap;
         flex-shrink:0;
     }
@@ -814,5 +846,106 @@ textarea{
     }
     .nav-list::-webkit-scrollbar{
         display:none;
+    }
+
+    /* 전체 기본 폰트 */
+    .main{
+        font-size:13px;
+    }
+
+    /* 채팅 영역 padding 줄이기 */
+    .chat-area{
+        padding:10px;
+    }
+
+    /* 메시지 박스 */
+    .message{
+        font-size:12px;
+        padding:8px 10px;
+        margin-bottom:8px;
+    }
+
+    /* 사용자 / 봇 메시지 최대 너비 */
+    .message.user,
+    .message.bot{
+        max-width:90%;
+    }
+
+    /* 개념 설명 답변 */
+    .concept-answer{
+        font-size:12px;
+    }
+
+    /* 문제 카드 */
+    .problem-card{
+        padding:10px;
+        margin-bottom:12px;
+        font-size:12px;
+    }
+
+    .problem-question{
+        font-size:12px;
+    }
+
+    .problem-answer{
+        font-size:12px;
+    }
+
+    .problem-solution{
+        font-size:12px;
+    }
+
+    /* 버튼 */
+    .toggle-btn{
+        font-size:11px;
+        padding:4px 8px;
+        margin-top:6px;
+    }
+
+    /* 입력 영역 */
+
+    .input-area{
+        padding:8px;
+        gap:6px;
+    }
+
+    .input-area textarea{
+        font-size:13px;
+        padding:8px;
+    }
+
+    .input-area button{
+        font-size:14px;
+        padding:6px 10px;
+    }
+
+    /* 옵션 영역 */
+
+    .options-area{
+        padding:8px;
+        gap:8px;
+    }
+
+    .difficulty-btn,
+    .example-btn{
+        font-size:11px;
+        padding:5px 8px;
+    }
+
+    /* 문제 수 선택 */
+
+    .count-box{
+        gap:6px;
+    }
+
+    .count-number{
+        font-size:12px;
+        min-width:20px;
+        text-align:center;
+    }
+
+    .count-box button{
+        font-size:12px;
+        padding:3px 8px;
     }
 }
