@@ -40,6 +40,16 @@ const MyProblem = ({ userEmail }) => {
     const [newSolution,setNewSolution] = useState("");
     const [newDifficulty,setNewDifficulty] = useState("");
 
+    const [showCategoryInput,setShowCategoryInput] = useState(false);
+
+    const requireLogin = () => {
+        if(!userEmail){
+            alert("로그인 후 이용 가능합니다.");
+            return false;
+        }
+        return true;
+    };
+
     // ================= 카테고리 =================
 
     const fetchCategories = async () => {
@@ -63,6 +73,8 @@ const MyProblem = ({ userEmail }) => {
     };
 
     const addCategory = async () => {
+
+        if(!requireLogin()) return;
 
         if (!newCategory.trim()) return;
 
@@ -108,6 +120,8 @@ const MyProblem = ({ userEmail }) => {
     // ================= 문제 생성 =================
 
     const createProblem = async () => {
+
+        if(!requireLogin()) return;
 
         if(!newQuestion.trim()) return;
 
@@ -393,19 +407,50 @@ const MyProblem = ({ userEmail }) => {
 
                 <div className="mc-category-add">
 
-                    <input
-                        className="mc-category-input"
-                        placeholder="새 카테고리"
-                        value={newCategory}
-                        onChange={(e) => setNewCategory(e.target.value)}
-                    />
+                    {!showCategoryInput ? (
 
-                    <button
-                        className="mc-category-add-btn"
-                        onClick={addCategory}
-                    >
-                        추가
-                    </button>
+                        <button
+                            className="mc-category-add-toggle"
+                            onClick={()=>setShowCategoryInput(true)}
+                        >
+                            + 카테고리 추가
+                        </button>
+
+                    ) : (
+
+                        <div className="mc-category-add-form">
+
+                            <input
+                                className="mc-category-input"
+                                placeholder="카테고리 이름"
+                                value={newCategory}
+                                onChange={(e)=>setNewCategory(e.target.value)}
+                                autoFocus
+                            />
+
+                            <button
+                                className="mc-category-confirm"
+                                onClick={()=>{
+                                    addCategory();
+                                    setShowCategoryInput(false);
+                                }}
+                            >
+                                ✔
+                            </button>
+
+                            <button
+                                className="mc-category-cancel"
+                                onClick={()=>{
+                                    setShowCategoryInput(false);
+                                    setNewCategory("");
+                                }}
+                            >
+                                ✕
+                            </button>
+
+                        </div>
+
+                    )}
 
                 </div>
 
@@ -626,28 +671,103 @@ const MyProblem = ({ userEmail }) => {
                         {editMode ? (
 
                             <>
-                                <input
-                                    className="mc-edit-question"
-                                    value={editQuestion}
-                                    onChange={(e) => setEditQuestion(e.target.value)}
-                                />
+                                {/* 문제 */}
 
-                                <input
-                                    className="mc-edit-question"
-                                    value={editAnswer}
-                                    onChange={(e) => setEditAnswer(e.target.value)}
-                                />
+                                <div className="mc-edit-block">
 
-                                <textarea
-                                    className="mc-edit-answer"
-                                    value={editSolution}
-                                    onChange={(e) => setEditSolution(e.target.value)}
-                                />
+                                    <div className="mc-edit-label">문제</div>
+
+                                    <div className="mc-edit-grid">
+
+            <textarea
+                className="mc-edit-answer"
+                value={editQuestion}
+                onChange={(e) => setEditQuestion(e.target.value)}
+            />
+
+                                        <div className="mc-preview">
+
+                                            <ReactMarkdown
+                                                remarkPlugins={[remarkMath]}
+                                                rehypePlugins={[rehypeKatex]}
+                                            >
+                                                {editQuestion}
+                                            </ReactMarkdown>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+
+                                {/* 정답 */}
+
+                                <div className="mc-edit-block">
+
+                                    <div className="mc-edit-label">정답</div>
+
+                                    <div className="mc-edit-grid">
+
+            <textarea
+                className="mc-edit-answer"
+                value={editAnswer}
+                onChange={(e) => setEditAnswer(e.target.value)}
+            />
+
+                                        <div className="mc-preview">
+
+                                            <ReactMarkdown
+                                                remarkPlugins={[remarkMath]}
+                                                rehypePlugins={[rehypeKatex]}
+                                            >
+                                                {editAnswer}
+                                            </ReactMarkdown>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+
+                                {/* 풀이 */}
+
+                                <div className="mc-edit-block">
+
+                                    <div className="mc-edit-label">풀이</div>
+
+                                    <div className="mc-edit-grid">
+
+            <textarea
+                className="mc-edit-answer"
+                value={editSolution}
+                onChange={(e) => setEditSolution(e.target.value)}
+            />
+
+                                        <div className="mc-preview">
+
+                                            <ReactMarkdown
+                                                remarkPlugins={[remarkMath]}
+                                                rehypePlugins={[rehypeKatex]}
+                                            >
+                                                {editSolution}
+                                            </ReactMarkdown>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+
+                                {/* 난이도 */}
 
                                 <input
                                     className="mc-edit-question"
                                     value={editDifficulty}
                                     onChange={(e) => setEditDifficulty(e.target.value)}
+                                    placeholder="난이도"
                                 />
 
                                 <div className="mc-modal-actions">

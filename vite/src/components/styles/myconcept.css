@@ -2,8 +2,9 @@
 
 .mc-layout{
     display:flex;
-    height:100%;
-    min-height:100%;
+    height:100%;            /* 수정 (100vh 제거) */
+    width:100%;
+    min-height:0;
     font-family:Arial, Helvetica, sans-serif;
     background:#ffffff;
 }
@@ -101,6 +102,8 @@
     padding:20px;
     display:flex;
     flex-direction:column;
+    overflow:hidden;      /* 추가 */
+    min-height:0;         /* flex scroll 필수 */
 }
 
 
@@ -136,12 +139,16 @@
 /* ================== 개념 카드 ================== */
 
 .mc-concept-grid{
-    flex:1;
+    flex:1;                       /* 추가 */
     display:grid;
     grid-template-columns:repeat(4,1fr);
+    grid-auto-rows:220px;         /* 카드 높이 고정 */
     gap:16px;
     align-content:start;
+    overflow-y:auto;
+    min-height:0;
 }
+
 .mc-concept-card{
     background:white;
     border:1px solid #ddd;
@@ -153,6 +160,9 @@
     width:100%;
     display:flex;
     flex-direction:column;
+
+    height:220px;                 /* 카드 높이 고정 */
+    overflow:hidden;
 }
 
 .mc-concept-card:hover{
@@ -176,7 +186,7 @@
     font-weight:600;
     margin:0;
 
-    min-width:0;          /* 중요 */
+    min-width:0;
     overflow:hidden;
 }
 
@@ -187,7 +197,7 @@
     display:flex;
     gap:8px;
     align-items:center;
-    flex-shrink:0;   /* 버튼 영역 줄어들지 않게 */
+    flex-shrink:0;
 }
 
 .mc-delete-btn{
@@ -226,7 +236,7 @@
 /* ================== 카드 내용 ================== */
 
 .mc-concept-preview{
-    max-height:90px;
+    flex:1;
     overflow:hidden;
     font-size:14px;
     line-height:1.5;
@@ -247,6 +257,7 @@
 
 
 /* ================== 페이징 ================== */
+
 .mc-pagination{
     margin-top:25px;
     display:flex;
@@ -331,6 +342,7 @@
 .katex-display{
     overflow-x:auto;
 }
+
 .mc-edit-btn{
     background:#dcdcdc;
     border:none;
@@ -375,11 +387,13 @@
 
 .mc-edit-answer{
     width:100%;
-    height:250px;
+    min-height:80px;
+    max-height:300px;
     padding:10px;
     border:1px solid #ccc;
     border-radius:6px;
     resize:vertical;
+    overflow:auto;
 }
 .mc-concept-title{
     font-size:15px;
@@ -391,6 +405,8 @@
     text-overflow:ellipsis;
     white-space:nowrap;
 }
+
+
 /* ================== 드래그 모드 ================== */
 
 .drag-mode .mc-main{
@@ -413,6 +429,8 @@
     color:white;
     transform:scale(1.02);
 }
+
+
 /* 개념 추가 버튼 */
 
 .mc-add-btn{
@@ -428,6 +446,7 @@
 .mc-add-btn:hover{
     opacity:0.9;
 }
+
 .mc-empty{
     grid-column:1/-1;
     display:flex;
@@ -436,6 +455,7 @@
     font-size:18px;
     color:#777;
 }
+
 .mc-concept-title,
 .mc-concept-preview{
     width:100%;
@@ -446,6 +466,7 @@
     margin:0;
     width:100%;
 }
+
 .mc-category-item{
     display:flex;
     justify-content:space-between;
@@ -463,18 +484,16 @@
 .mc-category-delete-btn:hover{
     color:red;
 }
+
+
 /* ================== MOBILE ================== */
 
 @media (max-width:768px){
 
-    /* layout 세로 전환 */
-
     .mc-layout{
         flex-direction:column;
-        height:auto;
+        height:100%;
     }
-
-    /* 카테고리 사이드바 → 위쪽 바 */
 
     .mc-sidebar{
         width:100%;
@@ -485,8 +504,6 @@
         padding:10px;
     }
 
-    /* 카테고리 리스트 → 가로 스크롤 */
-
     .mc-category-list{
         display:flex;
         flex-direction:row;
@@ -494,7 +511,6 @@
         overflow-x:auto;
         width:100%;
     }
-    /* 카테고리 버튼 스타일 */
 
     .mc-category-item{
         white-space:nowrap;
@@ -503,69 +519,63 @@
         border-radius:20px;
         flex:0 0 auto;
     }
+
     .mc-category-list::-webkit-scrollbar{
         display:none;
     }
-    /* 개념 grid → 1열 */
 
     .mc-concept-grid{
         grid-template-columns:repeat(2,1fr);
+        grid-auto-rows:180px;
         gap:10px;
     }
-
-    /* 카드 패딩 약간 축소 */
 
     .mc-concept-card{
         padding:12px;
         font-size:13px;
     }
+
     .mc-concept-title{
         font-size:13px;
     }
 
     .mc-concept-preview{
         font-size:12px;
-        max-height:70px;
     }
-
-    /* 검색창 */
 
     .mc-search-bar{
         display:flex;
         flex-direction:row;
         gap:8px;
     }
+
     .mc-add-btn{
         flex:0 0 auto;
     }
 
     .mc-search-input{
         flex:1;
-    }
-
-
-    .mc-search-input{
         margin-right:0;
     }
-
-    /* 모달 */
 
     .mc-modal-content{
         width:60%;
         max-height:50vh;
         padding:15px;
     }
+
     .mc-modal-body{
         font-size:14px;
     }
+
     .mc-edit-answer{
         height:150px;
     }
-    /* pagination */
 
     .mc-pagination{
         flex-wrap:wrap;
     }
+
     .mc-category-add{
         margin-top:10px;
         display:flex;
@@ -580,6 +590,85 @@
     .mc-category-add-btn{
         width:auto;
         padding:6px 10px;
+    }
+
+}
+/* ================== markdown editor ================== */
+
+.mc-edit-block{
+    margin-bottom:20px;
+}
+
+.mc-edit-label{
+    font-size:14px;
+    font-weight:600;
+    margin-bottom:6px;
+}
+
+.mc-edit-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+}
+
+.mc-preview{
+    border:1px solid #ddd;
+    border-radius:6px;
+    padding:12px;
+    background:#fafafa;
+    overflow:auto;
+    font-size:14px;
+}
+/* ================== category add UX ================== */
+
+.mc-category-add{
+    margin-top:10px;
+}
+
+.mc-category-add-toggle{
+    width:100%;
+    border:none;
+    background:none;
+    text-align:left;
+    padding:8px 6px;
+    color:#777;
+    cursor:pointer;
+    border-radius:6px;
+    font-size:14px;
+}
+
+.mc-category-add-toggle:hover{
+    background:#e5e5e5;
+    color:#000;
+}
+
+.mc-category-add-form{
+    display:flex;
+    gap:6px;
+    margin-top:6px;
+}
+
+.mc-category-confirm{
+    border:none;
+    background:#c4c4c4;
+    padding:4px 8px;
+    border-radius:4px;
+    cursor:pointer;
+}
+
+.mc-category-cancel{
+    border:none;
+    background:#eee;
+    padding:4px 8px;
+    border-radius:4px;
+    cursor:pointer;
+}
+/* 모바일 */
+
+@media (max-width:768px){
+
+    .mc-edit-grid{
+        grid-template-columns:1fr;
     }
 
 }

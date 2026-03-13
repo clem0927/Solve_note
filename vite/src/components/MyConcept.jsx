@@ -35,6 +35,16 @@ const MyConcept = ({ userEmail }) => {
     const [newQuestion,setNewQuestion] = useState("");
     const [newAnswer,setNewAnswer] = useState("");
 
+    const [showCategoryInput,setShowCategoryInput] = useState(false);
+
+    const requireLogin = () => {
+        if(!userEmail){
+            alert("로그인 후 이용 가능합니다.");
+            return false;
+        }
+        return true;
+    };
+
     const fetchCategories = async () => {
         try {
             const res = await axios.get("/back/category", { withCredentials: true });
@@ -46,6 +56,8 @@ const MyConcept = ({ userEmail }) => {
     };
 
     const addCategory = async () => {
+
+        if(!requireLogin()) return;
 
         if (!newCategory.trim()) return;
 
@@ -66,6 +78,8 @@ const MyConcept = ({ userEmail }) => {
     };
 
     const deleteCategory = async (id) => {
+
+        if(!requireLogin()) return;
 
         if (!window.confirm("카테고리를 삭제하시겠습니까?")) return;
 
@@ -112,6 +126,7 @@ const MyConcept = ({ userEmail }) => {
     };
 
     const createConcept = async () => {
+        if(!requireLogin()) return;
 
         if(!newQuestion.trim()) return;
 
@@ -141,7 +156,7 @@ const MyConcept = ({ userEmail }) => {
     };
 
     const deleteConcept = async (id) => {
-
+        if(!requireLogin()) return;
         if (!window.confirm("삭제하시겠습니까?")) return;
 
         try {
@@ -304,19 +319,50 @@ const MyConcept = ({ userEmail }) => {
 
                 <div className="mc-category-add">
 
-                    <input
-                        className="mc-category-input"
-                        placeholder="새 카테고리"
-                        value={newCategory}
-                        onChange={(e) => setNewCategory(e.target.value)}
-                    />
+                    {!showCategoryInput ? (
 
-                    <button
-                        className="mc-category-add-btn"
-                        onClick={addCategory}
-                    >
-                        추가
-                    </button>
+                        <button
+                            className="mc-category-add-toggle"
+                            onClick={()=>setShowCategoryInput(true)}
+                        >
+                            + 카테고리 추가
+                        </button>
+
+                    ) : (
+
+                        <div className="mc-category-add-form">
+
+                            <input
+                                className="mc-category-input"
+                                placeholder="카테고리 이름"
+                                value={newCategory}
+                                onChange={(e)=>setNewCategory(e.target.value)}
+                                autoFocus
+                            />
+
+                            <button
+                                className="mc-category-confirm"
+                                onClick={()=>{
+                                    addCategory();
+                                    setShowCategoryInput(false);
+                                }}
+                            >
+                                ✔
+                            </button>
+
+                            <button
+                                className="mc-category-cancel"
+                                onClick={()=>{
+                                    setShowCategoryInput(false);
+                                    setNewCategory("");
+                                }}
+                            >
+                                ✕
+                            </button>
+
+                        </div>
+
+                    )}
 
                 </div>
 

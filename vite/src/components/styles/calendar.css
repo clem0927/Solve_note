@@ -1,0 +1,321 @@
+/* ================= 캘린더 기본 ================= */
+
+.calendar-category{
+    display:flex;
+    align-items:center;
+    gap:6px;
+}
+
+.calendar-color{
+    width:12px;
+    height:12px;
+    border-radius:3px;
+}
+
+
+/* ================= FullCalendar ================= */
+
+.fc{
+    color:black;
+}
+
+.fc-toolbar-title{
+    font-size:20px;
+    font-weight:600;
+}
+
+.fc-button{
+    background:#dcdcdc !important;
+    border:none !important;
+    color:#000 !important;
+    border-radius:6px !important;
+    padding:4px 10px !important;
+}
+
+.fc-button:hover{
+    background:#c8c8c8 !important;
+}
+
+.fc-theme-standard td,
+.fc-theme-standard th{
+    border:1px solid #e5e5e5;
+}
+
+.fc-col-header-cell{
+    background:#f7f7f8;
+}
+
+.fc-daygrid-day-number{
+    color:#333;
+}
+
+.fc-event{
+    border:none;
+    font-size:12px;
+    border-radius:4px;
+}
+
+
+
+/* ================= 모달 ================= */
+
+.calendar-modal-title{
+    margin-bottom:20px;
+    font-size:18px;
+    font-weight:600;
+}
+
+
+/* ================= + 추가 버튼 ================= */
+
+.calendar-add-btn{
+    background:#e5e5e5;
+    border:none;
+    padding:6px 12px;
+    border-radius:6px;
+    cursor:pointer;
+    font-size:13px;
+    transition:0.15s;
+}
+
+.calendar-add-btn:hover{
+    background:#d0d0d0;
+}
+
+
+
+/* ================= 일정 리스트 ================= */
+
+.calendar-day-list{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+
+/* ================= 일정 카드 ================= */
+
+.calendar-day-item{
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:10px 12px;
+
+    background:white;
+
+    border:1px solid #e6e6e6;
+    border-radius:8px;
+
+    transition:0.15s;
+}
+
+.calendar-day-item:hover{
+    background:#fafafa;
+    transform:translateY(-1px);
+}
+
+
+/* ================= 왼쪽 정보 ================= */
+
+.calendar-item-left{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+/* 색상 동그라미 */
+
+.calendar-dot{
+    width:10px;
+    height:10px;
+    border-radius:50%;
+}
+
+
+/* 제목 */
+
+.calendar-title{
+    font-size:14px;
+    font-weight:600;
+}
+.calender-desc{
+    font-size:12px;
+}
+
+/* 시간 */
+
+.calendar-time{
+    font-size:12px;
+    color:#777;
+}
+
+
+
+/* ================= 액션 버튼 ================= */
+
+.calendar-day-actions{
+    display:flex;
+    gap:6px;
+}
+
+/* 아이콘 버튼 */
+
+.calendar-icon-btn{
+
+    width:28px;
+    height:28px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border:none;
+    border-radius:6px;
+
+    background:#f2f2f2;
+
+    cursor:pointer;
+
+    transition:0.15s;
+}
+
+.calendar-icon-btn:hover{
+    background:#e2e2e2;
+}
+
+/* 삭제 버튼 */
+
+.calendar-icon-btn.delete{
+    background:#ffeaea;
+}
+
+.calendar-icon-btn.delete:hover{
+    background:#ffd7d7;
+}
+
+
+
+/* ================= 일정 없음 ================= */
+
+.calendar-empty{
+
+    text-align:center;
+
+    padding:20px;
+
+    color:#888;
+
+    font-size:14px;
+}
+
+
+
+/* ================= 수정 모드 폼 ================= */
+
+.calendar-form{
+
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+}
+
+
+/* 입력 */
+
+.calendar-input{
+    padding:8px 10px;
+    border-radius:6px;
+    border:1px solid #ddd;
+    font-size:14px;
+}
+
+.calendar-input:focus{
+    outline:none;
+    border-color:#bbb;
+}
+
+
+/* textarea */
+
+.calendar-textarea{
+    padding:8px 10px;
+    border-radius:6px;
+    border:1px solid #ddd;
+    min-height:70px;
+    resize:vertical;
+}
+
+
+/* 시간 */
+
+.calendar-datetime{
+    padding:8px 10px;
+    border-radius:6px;
+    border:1px solid #ddd;
+}
+
+
+/* select */
+
+.calendar-select{
+    padding:8px 10px;
+    border-radius:6px;
+    border:1px solid #ddd;
+}
+
+
+/* 버튼 영역 */
+
+.calendar-form-actions{
+
+    display:flex;
+    justify-content:flex-end;
+    gap:10px;
+}
+
+
+/* 저장 */
+
+.calendar-save-btn{
+
+    background:#c4c4c4;
+    border:none;
+
+    padding:6px 14px;
+
+    border-radius:6px;
+
+    cursor:pointer;
+
+}
+
+.calendar-save-btn:hover{
+    background:#b4b4b4;
+}
+
+
+/* 취소 */
+
+.calendar-cancel-btn{
+
+    background:#eeeeee;
+    border:none;
+
+    padding:6px 14px;
+
+    border-radius:6px;
+
+    cursor:pointer;
+
+}
+
+.calendar-cancel-btn:hover{
+    background:#e0e0e0;
+}
+.mc-modal-content{
+    width:420px;
+    max-width:92vw;
+    border-radius:12px;
+}

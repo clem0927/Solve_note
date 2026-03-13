@@ -9,20 +9,21 @@ import "katex/dist/katex.min.css";
 import MyConcept from "../components/MyConcept.jsx";
 import MyProblem from "../components/MyProblem.jsx";
 import ProfileModal from "../components/ProfileModal.jsx";
+import Calendar from "../components/Calendar.jsx";
 axios.defaults.withCredentials = true;
 const Home = () => {
 
     // ===== 모드별 채팅 =====
     const [chatMessages, setChatMessages] = useState([
-        { role: "bot", text: "안녕하세요." }
+        { role: "bot", text: "안녕하세요.무엇이든 질문하고 정리하세요!" }
     ]);
 
     const [conceptMessages, setConceptMessages] = useState([
-        { role: "bot", text: "개념 설명 모드입니다." }
+        { role: "bot", text: "개념에 대해 질문하세요." }
     ]);
 
     const [problemMessages, setProblemMessages] = useState([
-        { role: "bot", text: "문제를 생성해보세요." }
+        { role: "bot", text: "학습 문제를 생성해보세요." }
     ]);
 
     const [input, setInput] = useState("");
@@ -45,6 +46,8 @@ const Home = () => {
     const [questionCount, setQuestionCount] = useState(1);
 
     const [loading, setLoading] = useState(false);
+
+    const [showNotice, setShowNotice] = useState(false);
 
     // ===== 현재 모드 messages 선택 =====
     const getMessages = () => {
@@ -278,10 +281,38 @@ const Home = () => {
         <div className="layout">
 
             <aside className="sidebar">
+
                 <div className="logo-area">
-                    <div className="logo">Solve NotesSse</div>
-                    <img className="logo-img" src="images/solvenote.png" />
+
+                    <div className="logo">
+                        Solve Note <span className="logo-beta">BETA</span>
+                    </div>
+
+                    <img className="logo-img" src="/images/solvenote.png" />
+
                 </div>
+
+                {/* 공지 */}
+
+                <div className="notice-area">
+
+                    <div className="notice-title">Notice</div>
+
+                    <div className="notice-list">
+
+                        <div
+                            className="notice-item"
+                            onClick={() => setShowNotice(true)}
+                        >
+                            SolveNote Beta 오픈
+                        </div>
+
+                    </div>
+
+                </div>
+
+                {/* 프로필 */}
+
                 <div
                     className="sidebar-profile"
                     onClick={() => setShowProfile(true)}
@@ -304,6 +335,7 @@ const Home = () => {
                     </div>
 
                 </div>
+
             </aside>
 
             <main className="main">
@@ -326,7 +358,7 @@ const Home = () => {
 
                             <li className="nav-divider">|</li>
 
-                            {["개념정리","문제정리"].map(m => (
+                            {["개념정리","문제정리","캘린더"].map(m => (
                                 <li
                                     key={m}
                                     className={`nav-item ${mode === m ? "active" : ""}`}
@@ -376,6 +408,8 @@ const Home = () => {
                         <MyConcept userEmail={user?.email}/>
                     ) : mode === "문제정리" ? (
                         <MyProblem userEmail={user?.email}/>
+                    ) : mode === "캘린더" ? (
+                        <Calendar userEmail={user?.email}/>
                     ) : (
                         messages.map((msg, idx) => {
 
@@ -571,7 +605,7 @@ const Home = () => {
                     </div>
                 )}
 
-                {!(mode === "개념정리" || mode === "문제정리") && (
+                {!(mode === "개념정리" || mode === "문제정리" || mode === "캘린더") && (
 
                     <form
                         className="input-area"
@@ -614,6 +648,56 @@ const Home = () => {
                 user={user}
                 setUser={setUser}
             />
+            {showNotice && (
+
+                <div
+                    className="notice-modal-overlay"
+                    onClick={() => setShowNotice(false)}
+                >
+
+                    <div
+                        className="notice-modal"
+                        onClick={(e) => e.stopPropagation()}
+                    >
+
+                        <div className="notice-modal-title">
+                            SolveNote Beta
+                        </div>
+
+                        <div className="notice-modal-content">
+
+                            SolveNote Beta 버전이 오픈되었습니다.
+
+                            <br/><br/>
+
+                            ✔ 일반채팅
+                            <br/>
+                            ✔ 개념 설명 및 정리
+                            <br/>
+                            ✔ 문제 생성 및 정리
+                            <br/>
+                            ✔ 캘린더 기능
+
+                            <br/><br/>
+                            <b>FREE-TIER:</b>일일 최대 채팅 20회,개념 및 문제 저장 20개
+                            <br/>
+                            <br></br>
+                            <p>오류신고,문의,기능추가는  <b>kklem0101@gmail.com</b></p>
+
+                        </div>
+
+                        <button
+                            className="notice-modal-close"
+                            onClick={() => setShowNotice(false)}
+                        >
+                            확인
+                        </button>
+
+                    </div>
+
+                </div>
+
+            )}
         </div>
     );
 
