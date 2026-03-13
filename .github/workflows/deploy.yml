@@ -22,6 +22,11 @@ jobs:
             cd ~/solvenote/spring_project
             git fetch origin
             git reset --hard origin/deploy
+            
+            # React build
+            cd vite
+            npm install
+            npm run build
 
             cd ~/solvenote/Solvenote_Ai
             git fetch origin
