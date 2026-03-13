@@ -19,7 +19,7 @@ const Home = () => {
     ]);
 
     const [conceptMessages, setConceptMessages] = useState([
-        { role: "bot", text: "개념에 대해 질문하세요." }
+        { role: "bot", text: "궁금한 개념을 질문하세요." }
     ]);
 
     const [problemMessages, setProblemMessages] = useState([
