@@ -677,6 +677,13 @@
 /* 모바일 */
 
 @media (max-width:768px){
+    body{
+        overflow:auto;
+    }
+
+    .layout{
+        overflow:visible;
+    }
     .mc-sidebar-title{
         font-size:12px;
     }
@@ -705,11 +712,12 @@
     /* 전체 기본 폰트 축소 */
     .mc-layout{
         font-size:13px;
+        overflow:visible;
     }
 
     /* 사이드바 */
     .mc-sidebar{
-        padding:10px;
+        padding:3px 10px;
     }
 
     .mc-sidebar-title{
@@ -845,6 +853,9 @@
     .mc-category-delete-btn{
         font-size:12px;
     }
-
+    .mc-category-add-toggle{
+        margin:0;
+        padding:2px;
+    }
 
 }

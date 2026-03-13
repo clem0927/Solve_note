@@ -760,12 +760,19 @@ textarea{
         justify-content:space-between;
         padding:0 12px;
     }
+
+
     .sidebar-profile{
+        width:auto;
+        margin-left:auto;
+        display:flex;
+        align-items:center;   /* 수직 중앙 */
+        height:100%;          /* 부모 높이 맞추기 */
         border:none;
-        height: 100%;
-        margin:0;
-        padding:0;
+        padding:0 6px;
     }
+
+
 
     .profile-avatar{
 
