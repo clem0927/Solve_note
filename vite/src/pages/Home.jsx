@@ -279,7 +279,7 @@ const Home = () => {
 
             <aside className="sidebar">
                 <div className="logo-area">
-                    <div className="logo">Solve NotesSs</div>
+                    <div className="logo">Solve NotesSse</div>
                     <img className="logo-img" src="images/solvenote.png" />
                 </div>
                 <div
