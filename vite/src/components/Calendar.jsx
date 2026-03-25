@@ -137,9 +137,7 @@ const Calendar = ({userEmail}) => {
     },[userEmail]);
 
     useEffect(()=>{
-        if(categories.length > 0){
             fetchSchedules();
-        }
     },[categories]);
 
     /* ======================= 날짜 클릭 ======================= */
@@ -310,7 +308,6 @@ const Calendar = ({userEmail}) => {
             {/* ================= 사이드바 ================= */}
 
             <aside className="mc-sidebar">
-                <div className="mc-sidebar-header">
                     <h3 className="mc-sidebar-title">일정 카테고리</h3>
                     <div className="mc-category-add">
 
@@ -357,9 +354,7 @@ const Calendar = ({userEmail}) => {
                             </div>
 
                         )}
-
                     </div>
-                </div>
 
                 <ul className="mc-category-list">
 

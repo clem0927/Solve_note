@@ -266,7 +266,6 @@ const MyConcept = ({ userEmail }) => {
         <div className={`mc-layout ${dragging ? "drag-mode" : ""}`}>
 
             <aside className="mc-sidebar">
-                <div className="mc-sidebar-header">
                 <h3 className="mc-sidebar-title">개념 카테고리</h3>
                 <div className="mc-category-add">
 
@@ -314,9 +313,8 @@ const MyConcept = ({ userEmail }) => {
                         </div>
 
                     )}
-
                     </div>
-                </div>
+
                 <ul className="mc-category-list">
 
                     {categories.map(cat => (
