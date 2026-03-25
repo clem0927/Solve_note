@@ -133,13 +133,9 @@ const Calendar = ({userEmail}) => {
     useEffect(()=>{
         if(userEmail){
             fetchCategories();
+            fetchSchedules();
         }
     },[userEmail]);
-
-    useEffect(()=>{
-            fetchSchedules();
-    },[categories]);
-
     /* ======================= 날짜 클릭 ======================= */
 
     const handleDateClick = async(info)=>{
