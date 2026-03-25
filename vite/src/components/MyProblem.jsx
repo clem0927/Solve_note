@@ -355,8 +355,57 @@ const MyProblem = ({ userEmail }) => {
         <div className={`mc-layout ${dragging ? "drag-mode" : ""}`}>
 
             <aside className="mc-sidebar">
+                <div className="mc-sidebar-header">
+                    <h3 className="mc-sidebar-title">문제 카테고리</h3>
+                    <div className="mc-category-add">
 
-                <h3 className="mc-sidebar-title">문제 카테고리</h3>
+                        {!showCategoryInput ? (
+
+                            <button
+                                className="mc-category-add-toggle"
+                                onClick={()=>setShowCategoryInput(true)}
+                            >
+                                + 추가
+                            </button>
+
+                        ) : (
+
+                            <div className="mc-category-add-form">
+
+                                <input
+                                    className="mc-category-input"
+                                    placeholder="카테고리 이름"
+                                    value={newCategory}
+                                    onChange={(e)=>setNewCategory(e.target.value)}
+                                    autoFocus
+                                />
+
+                                <button
+                                    className="mc-category-confirm"
+                                    onClick={()=>{
+                                        addCategory();
+                                        setShowCategoryInput(false);
+                                    }}
+                                >
+                                    ✔
+                                </button>
+
+                                <button
+                                    className="mc-category-cancel"
+                                    onClick={()=>{
+                                        setShowCategoryInput(false);
+                                        setNewCategory("");
+                                    }}
+                                >
+                                    ✕
+                                </button>
+
+                            </div>
+
+                        )}
+                    </div>
+
+                </div>
 
                 <ul className="mc-category-list">
 
@@ -408,54 +457,7 @@ const MyProblem = ({ userEmail }) => {
 
                 </ul>
 
-                <div className="mc-category-add">
 
-                    {!showCategoryInput ? (
-
-                        <button
-                            className="mc-category-add-toggle"
-                            onClick={()=>setShowCategoryInput(true)}
-                        >
-                            + 카테고리 추가
-                        </button>
-
-                    ) : (
-
-                        <div className="mc-category-add-form">
-
-                            <input
-                                className="mc-category-input"
-                                placeholder="카테고리 이름"
-                                value={newCategory}
-                                onChange={(e)=>setNewCategory(e.target.value)}
-                                autoFocus
-                            />
-
-                            <button
-                                className="mc-category-confirm"
-                                onClick={()=>{
-                                    addCategory();
-                                    setShowCategoryInput(false);
-                                }}
-                            >
-                                ✔
-                            </button>
-
-                            <button
-                                className="mc-category-cancel"
-                                onClick={()=>{
-                                    setShowCategoryInput(false);
-                                    setNewCategory("");
-                                }}
-                            >
-                                ✕
-                            </button>
-
-                        </div>
-
-                    )}
-
-                </div>
 
             </aside>
 
@@ -556,7 +558,7 @@ const MyProblem = ({ userEmail }) => {
                                         remarkPlugins={[remarkMath]}
                                         rehypePlugins={[rehypeKatex]}
                                     >
-                                        {(problem.answer || "").slice(0,120) + "..."}
+                                        {(problem.question || "").slice(0,120) + "..."}
                                     </ReactMarkdown>
 
                                 </div>
@@ -773,11 +775,11 @@ const MyProblem = ({ userEmail }) => {
 
                                     <div className="mc-edit-grid">
 
-            <textarea
-                className="mc-edit-answer"
-                value={editSolution}
-                onChange={(e) => setEditSolution(e.target.value)}
-            />
+                                <textarea
+                                    className="mc-edit-answer"
+                                    value={editSolution}
+                                    onChange={(e) => setEditSolution(e.target.value)}
+                                />
 
                                         <div className="mc-preview">
 

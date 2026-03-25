@@ -24,7 +24,7 @@
 }
 
 .mc-sidebar-title{
-    margin-bottom:12px;
+    margin:0;
     font-size:16px;
     font-weight:600;
     color:#000;
@@ -304,9 +304,11 @@
 .mc-modal-content{
     background:white;
     color:black;
-    padding:25px;
-    width:650px;
-    max-height:80vh;
+    width:1100px;
+    max-width:95vw;
+    min-width:800px;
+    max-height:85vh;
+    padding:28px;
     overflow-y:auto;
     border-radius:10px;
     box-shadow:0 8px 20px rgba(0,0,0,0.25);
@@ -315,6 +317,7 @@
 .mc-modal-body{
     margin-top:15px;
     line-height:1.6;
+    max-width:100%;
 }
 
 .mc-close-btn{
@@ -484,7 +487,12 @@
 .mc-category-delete-btn:hover{
     color:red;
 }
-
+.mc-sidebar-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:10px;
+}
 
 /* ================== MOBILE ================== */
 
@@ -559,7 +567,7 @@
     }
 
     .mc-modal-content{
-        width:60%;
+        width:92%;
         max-height:50vh;
         padding:15px;
     }
@@ -626,7 +634,7 @@
 }
 
 .mc-category-add-toggle{
-    width:100%;
+    width:auto;
     border:none;
     background:none;
     text-align:left;

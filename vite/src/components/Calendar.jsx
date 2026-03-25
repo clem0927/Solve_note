@@ -131,16 +131,16 @@ const Calendar = ({userEmail}) => {
     };
 
     useEffect(()=>{
-        if(categories.length > 0){
-            fetchSchedules();
-        }
-    },[categories]);
-
-    useEffect(()=>{
         if(userEmail){
             fetchCategories();
         }
     },[userEmail]);
+
+    useEffect(()=>{
+        if(categories.length > 0){
+            fetchSchedules();
+        }
+    },[categories]);
 
     /* ======================= 날짜 클릭 ======================= */
 
@@ -310,8 +310,56 @@ const Calendar = ({userEmail}) => {
             {/* ================= 사이드바 ================= */}
 
             <aside className="mc-sidebar">
+                <div className="mc-sidebar-header">
+                    <h3 className="mc-sidebar-title">일정 카테고리</h3>
+                    <div className="mc-category-add">
 
-                <h3 className="mc-sidebar-title">일정 카테고리</h3>
+                        {!showCategoryInput ?(
+
+                            <button
+                                className="mc-category-add-toggle"
+                                onClick={()=>setShowCategoryInput(true)}
+                            >
+                                + 추가
+                            </button>
+
+                        ):(
+
+                            <div className="mc-category-add-form">
+
+                                <input
+                                    className="mc-category-input"
+                                    placeholder="카테고리 이름"
+                                    value={newCategory}
+                                    onChange={(e)=>setNewCategory(e.target.value)}
+                                />
+
+                                <input
+                                    type="color"
+                                    value={newColor}
+                                    onChange={(e)=>setNewColor(e.target.value)}
+                                />
+
+                                <button
+                                    className="mc-category-confirm"
+                                    onClick={addCategory}
+                                >
+                                    ✔
+                                </button>
+
+                                <button
+                                    className="mc-category-cancel"
+                                    onClick={()=>setShowCategoryInput(false)}
+                                >
+                                    ✕
+                                </button>
+
+                            </div>
+
+                        )}
+
+                    </div>
+                </div>
 
                 <ul className="mc-category-list">
 
@@ -343,53 +391,7 @@ const Calendar = ({userEmail}) => {
 
                 </ul>
 
-                <div className="mc-category-add">
 
-                    {!showCategoryInput ?(
-
-                        <button
-                            className="mc-category-add-toggle"
-                            onClick={()=>setShowCategoryInput(true)}
-                        >
-                            + 카테고리 추가
-                        </button>
-
-                    ):(
-
-                        <div className="mc-category-add-form">
-
-                            <input
-                                className="mc-category-input"
-                                placeholder="카테고리 이름"
-                                value={newCategory}
-                                onChange={(e)=>setNewCategory(e.target.value)}
-                            />
-
-                            <input
-                                type="color"
-                                value={newColor}
-                                onChange={(e)=>setNewColor(e.target.value)}
-                            />
-
-                            <button
-                                className="mc-category-confirm"
-                                onClick={addCategory}
-                            >
-                                ✔
-                            </button>
-
-                            <button
-                                className="mc-category-cancel"
-                                onClick={()=>setShowCategoryInput(false)}
-                            >
-                                ✕
-                            </button>
-
-                        </div>
-
-                    )}
-
-                </div>
 
             </aside>
 
@@ -430,19 +432,18 @@ const Calendar = ({userEmail}) => {
                 <div className="mc-modal-overlay" onClick={()=>setShowModal(false)}>
 
                     <div
-                        className="mc-modal-content"
+                        className="mc-modal-content2"
                         onClick={(e)=>e.stopPropagation()}
                     >
 
-                        <h3 className="calendar-modal-title">
-                            {selectedDate} 일정
-                        </h3>
 
                         {mode === "LIST" && (
 
                             <>
-
                                 <div className="calendar-day-header">
+                                    <h3 className="calendar-modal-title">
+                                        {selectedDate} 일정
+                                    </h3>
 
                                     <button
                                         className="calendar-add-btn"
@@ -452,7 +453,6 @@ const Calendar = ({userEmail}) => {
                                     </button>
 
                                 </div>
-
                                 <div className="calendar-day-list">
 
                                     {daySchedules.length === 0 && (

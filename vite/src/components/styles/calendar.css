@@ -1,5 +1,4 @@
 /* ================= 기본 폰트 ================= */
-
 .fc {
     font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
     color: #37352f;
@@ -153,11 +152,12 @@
     background: rgba(0,0,0,0.2);
 }
 
-.mc-modal-content {
+.mc-modal-content2{
     background: white;
+    color:black;
     border-radius: 12px;
     padding: 20px;
-    width: 420px;
+    width: 400px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
 
@@ -327,7 +327,7 @@
         min-height: 70px;
     }
 
-    .mc-modal-content {
+    .mc-modal-content2 {
         width: 95%;
         padding: 16px;
     }
@@ -351,7 +351,7 @@
 
 /* ================= 모달 내부 정렬 ================= */
 
-.mc-modal-content {
+.mc-modal-content2 {
     display: flex;
     flex-direction: column;
     gap: 12px;
@@ -361,7 +361,8 @@
 
 .calendar-day-header {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;  /* 핵심 */
+    align-items: center;
 }
 
 /* + 추가 버튼 (노션 스타일) */
