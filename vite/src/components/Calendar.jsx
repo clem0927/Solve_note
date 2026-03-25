@@ -114,8 +114,8 @@ const Calendar = ({userEmail}) => {
                 start:s.startAt,
                 end:s.endAt,
 
-                backgroundColor:color,
-                borderColor:color,
+                backgroundColor:DEFAULT_COLOR,
+                borderColor:DEFAULT_COLOR,
 
                 extendedProps:{
                     description:s.description,
